@@ -1,20 +1,45 @@
-CREATE TABLE IF NOT EXISTS employees (
-    id INTEGER PRIMARY KEY,
-    first_name TEXT,
-    last_name TEXT,
-    department TEXT,
-    salary INTEGER,
-    hire_date TEXT
-);
-INSERT INTO employees (first_name, last_name, department, salary, hire_date) VALUES
-('John', 'Doe', 'Engineering', 75000, '2020-01-15'),
-('Jane', 'Smith', 'Marketing', 65000, '2019-03-22'),
-('Emily', 'Johnson', 'Sales', 70000, '2021-07-30'),
-('Michael', 'Brown', 'Engineering', 80000, '2018-11-05'),
-('Sarah', 'Davis', 'HR', 60000, '2020-05-10');
+--Run operations and analsyis queries here
 
 SELECT * FROM employees;
 
-SELECT * FROM employees
-WHERE department = 'Engineering';
+--Find average salary by department
+SELECT department, AVG(salary)
+FROM employees
+GROUP BY department;
+
+SELECT * FROM employees;
+
+--To see how many employees
+SELECT COUNT(*) employees;
+
+
+--Top 5 highest paid employees, descending order
+SELECT first_name, last_name, salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 5;
+
+--Average salary by department
+SELECT department, AVG(salary) AS average_salary
+FROM employees  
+GROUP BY department;
+
+--Number of employees in each department
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;
+
+--Employees hired after 2021
+SELECT first_name, last_name, hire_date
+FROM employees
+WHERE hire_date > '2021-12-31';
+
+--Department with the highest average salary
+SELECT department, AVG(salary) AS average_salary
+FROM employees
+GROUP BY department
+ORDER BY average_salary DESC
+LIMIT 1;
+
+
 
