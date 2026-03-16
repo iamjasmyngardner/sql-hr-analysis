@@ -41,5 +41,9 @@ GROUP BY department
 ORDER BY average_salary DESC
 LIMIT 1;
 
+-- Display all employees along with their department names using a JOIN
+SELECT * FROM employees;
+
+SELECT * FROM departments;
 
 

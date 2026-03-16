@@ -40,5 +40,56 @@ VALUES
 ('Andrew','King','IT',93000,'2020-02-13'),
 ('Nicole','Wright','Marketing',73000,'2021-12-07');
 
+CREATE TABLE departments (
+    department_id INTEGER PRIMARY KEY,
+    department_name TEXT
+);
+
+INSERT INTO departments (department_name) VALUES
+('HR'),
+('Finance'),
+('IT'),
+('Marketing');
+
+-- Joins employee and department tables, matches row where the department IDs match
+
+SELECT 
+    employees.first_name, 
+    employees.last_name, 
+    departments.department_name
+FROM employees
+JOIN departments ON employees.department_id = departments.department_id;
+
+
+-- employees table does not have department_id column
+
+DROP TABLE IF EXISTS employees; 
+
+CREATE TABLE employees (
+    id INTEGER PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT, 
+    department_id INTEGER,
+    salary INTEGER,
+    hire_date TEXT
+);
+
+INSERT INTO employees (first_name, last_name, department_id, salary, hire_date)
+VALUES
+('James','Wilson',1,62000,'2021-03-15'),
+('Maria','Garcia',2,78000,'2020-06-12'),
+('David','Lee',3,95000,'2019-09-20'),
+('Sarah','Johnson',4,72000,'2022-01-10');
+
+
+-- Running the same join query again
+SELECT
+    employees.first_name,
+    employees.last_name,
+    departments.department_name
+FROM employees
+JOIN departments
+ON employees.department_id = departments.department_id;
+
 
 
